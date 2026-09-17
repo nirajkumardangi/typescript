@@ -23,3 +23,25 @@ let bigNumber: bigint = 9007199254740991n;
 // 7. symbol — unique identifiers (rarely used in MERN)
 let uniqueId: symbol = Symbol("id");
 
+// 8. any - Opt out of type checking (avoid using!)
+let data: any = "hello";
+data = 42; // ✅ No error (defeats TypeScript purpose)
+data = true; // ✅ No error
+
+// 9. unknown - Safer than any (must check type before using)
+let value: unknown = "hello";
+// value.toUpperCase();  // ❌ Error! Must check type first
+if (typeof value === "string") {
+  console.log(value.toUpperCase()); // ✅ Safe!
+}
+
+// 10. void - Function returns nothing
+function logMessage(msg: string): void {
+  console.log(msg);
+  // no return statement
+}
+
+// 11. never - Function never returns (throws or infinite loop)
+function throwError(message: string): never {
+  throw new Error(message);
+}
